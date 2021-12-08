@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class TodoForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {inputValue: 'lolol hahahahha'};
+        this.state = {inputValue: ''};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -19,6 +19,7 @@ class TodoForm extends Component {
         return (
             <>
                 <input
+                 placeholder='Please enter a task...'
                  type='text'
                  value={this.state.inputValue}
                  onChange={this.handleChange}

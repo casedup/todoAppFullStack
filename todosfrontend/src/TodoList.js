@@ -84,12 +84,16 @@ class TodoList extends Component {
         });
 
     }
+    toggleTodo(todo) {
+        console.log(todo._id, todo.completed);
+    }
     render() {
         const todos = this.state.todos.map((t) => (
             <TodoItem
             key={t._id}
             {...t}
             onDelete={this.deleteTodo.bind(this,t._id)}
+            onToggle={this.toggleTodo.bind(this, t)}
             />
         ));
         return (
