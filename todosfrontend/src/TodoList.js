@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-const apiUrl = '/api/todos';
+import TodoItem from './TodoItem';
 
+const apiUrl = '/api/todos';
 class TodoList extends Component {
     constructor(props) {
         super(props);
@@ -8,7 +9,7 @@ class TodoList extends Component {
             todos: []
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         this.loadTodos();
 
     }
@@ -30,8 +31,18 @@ class TodoList extends Component {
             }).then(todos => this.setState({ todos }));
     }
     render() {
+        const todos = this.state.todos.map((t) => (
+            <TodoItem
+            key={t._id}
+            {...t}
+            />
+        ));
         return (
-            <h1>Todo List</h1>
+            <>
+                <h1>Todo List</h1>
+                <ul>{todos}</ul>     
+            </>
+            
         )
     }
 }
